@@ -1293,8 +1293,195 @@ h5.chat-h { font-size: 13.5px; color: var(--text-secondary); text-transform: upp
     color: #ffffff;
 }
 
-.btn-chat:hover {
+.ai-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 3px;
+}
+
+.context-badge {
+    background: #eef2ff;
+    color: #4361ee;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    border: 1px solid #c7d2fe;
+}
+
+.ai-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-icon-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f1f5f9;
+    border: 1px solid var(--border-color);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-icon-text:hover {
+    background: #e2e8f0;
+    color: var(--text-primary);
+}
+
+/* Smart Pro Actions Grid */
+.ai-pro-actions {
+    margin-bottom: 18px;
+    padding: 14px;
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.pro-actions-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+}
+
+.pro-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.action-btn {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.action-btn:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.12);
+}
+
+.action-btn strong {
+    font-size: 13px;
+    color: var(--text-primary);
+    display: block;
+}
+
+.action-btn span {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* Copy button & Msg Footer */
+.msg-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.btn-copy {
+    background: transparent;
+    border: none;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.15s;
+}
+
+.btn-copy:hover {
+    background: #f1f5f9;
+    color: var(--primary);
+}
+
+/* Floating AI Co-Pilot FAB Button */
+.floating-ai-fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: #0f172a;
+    color: #ffffff;
+    border-radius: var(--radius-full);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 25px -3px rgba(15, 23, 42, 0.35);
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid #334155;
+}
+
+.floating-ai-fab:hover {
     background: #1e293b;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 14px 28px -2px rgba(15, 23, 42, 0.45);
+}
+
+.fab-icon {
+    font-size: 18px;
+}
+
+.fab-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.fab-title {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.fab-badge {
+    font-size: 10.5px;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+@media (max-width: 900px) {
+    .pro-actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .pro-actions-grid {
+        grid-template-columns: 1fr;
+    }
+    .floating-ai-fab {
+        bottom: 16px;
+        right: 16px;
+        padding: 8px 14px;
+    }
 }
 
 .ai-disclaimer {

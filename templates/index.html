@@ -479,32 +479,72 @@
                     <div class="ai-brand-wrap">
                         <div class="ai-avatar">🤖</div>
                         <div>
-                            <h2>TaxWise AI Assistant</h2>
-                            <p class="muted">Powered by Gemini & Indian Tax Knowledge Base · Beginner Friendly</p>
+                            <div class="ai-title-row">
+                                <h2>TaxWise AI Co-Pilot</h2>
+                                <span class="badge badge-primary context-badge" id="ai-context-badge">Active Context: ₹12 Lakhs · New Regime</span>
+                            </div>
+                            <p class="muted">Powered by Google Gemini & Grounded Indian Tax Knowledge Base · FY 2025-26</p>
                         </div>
                     </div>
-                    <div class="ai-status">
-                        <span class="status-indicator"></span> Ready to Help
+                    <div class="ai-header-actions">
+                        <button type="button" class="btn-icon-text" onclick="clearChat()" title="Start a fresh conversation">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 6h18m-2 0v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                            </svg>
+                            Clear
+                        </button>
+                        <div class="ai-status">
+                            <span class="status-indicator"></span> Live Advisor
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personalized Pro Action Prompts -->
+                <div class="ai-pro-actions">
+                    <span class="pro-actions-label">⚡ Smart Actions for Your Profile:</span>
+                    <div class="pro-actions-grid">
+                        <button type="button" class="action-btn" onclick="askQuickPrompt('Analyze my current calculation and advise me on the best regime')">
+                            📊 <strong>Analyze My Numbers</strong>
+                            <span>Audit current salary & savings</span>
+                        </button>
+                        <button type="button" class="action-btn" onclick="askQuickPrompt('How can I optimize and save more tax on my current income?')">
+                            💡 <strong>Maximize Deductions</strong>
+                            <span>Unused 80C, 80D & NPS limits</span>
+                        </button>
+                        <button type="button" class="action-btn" onclick="askQuickPrompt('What is my deduction break-even point to switch to Old Regime?')">
+                            ⚖️ <strong>Regime Break-even</strong>
+                            <span>Deductions needed to beat New Regime</span>
+                        </button>
+                        <button type="button" class="action-btn" onclick="askQuickPrompt('Can I claim both HRA and home loan deduction together?')">
+                            🏠 <strong>HRA & Home Loan</strong>
+                            <span>Rules, limits & dual claiming</span>
+                        </button>
                     </div>
                 </div>
 
                 <!-- Quick Prompt Chips -->
                 <div class="prompt-chips">
-                    <span class="prompt-chips-label">Quick Questions:</span>
+                    <span class="prompt-chips-label">Explore Topics:</span>
                     <button type="button" class="chip-query" onclick="askQuickPrompt('What is Section 80C and what are its limits?')">
-                        What is Section 80C?
+                        Section 80C Guide
                     </button>
                     <button type="button" class="chip-query" onclick="askQuickPrompt('Old vs New Regime: Which is better for me?')">
-                        Old vs New Regime?
-                    </button>
-                    <button type="button" class="chip-query" onclick="askQuickPrompt('How does HRA tax exemption work?')">
-                        How HRA exemption works?
-                    </button>
-                    <button type="button" class="chip-query" onclick="askQuickPrompt('How can I save tax on ₹12 Lakh salary?')">
-                        Save tax on ₹12 Lakhs
+                        Old vs New Slabs
                     </button>
                     <button type="button" class="chip-query" onclick="askQuickPrompt('What is Section 87A rebate and marginal relief?')">
-                        Section 87A Rebate?
+                        Section 87A Zero Tax
+                    </button>
+                    <button type="button" class="chip-query" onclick="askQuickPrompt('How does presumptive taxation under Section 44ADA work for freelancers?')">
+                        Section 44ADA (Freelancers)
+                    </button>
+                    <button type="button" class="chip-query" onclick="askQuickPrompt('What are short term and long term capital gains tax rates on stocks?')">
+                        Capital Gains (STCG/LTCG)
+                    </button>
+                    <button type="button" class="chip-query" onclick="askQuickPrompt('ELSS vs PPF vs NPS: Which is best for tax saving?')">
+                        ELSS vs PPF vs NPS
+                    </button>
+                    <button type="button" class="chip-query" onclick="askQuickPrompt('What is Form 16 and how to read Part A and Part B?')">
+                        Understanding Form 16
                     </button>
                 </div>
 
@@ -512,15 +552,15 @@
                 <div class="chat-stream" id="chat-stream">
                     <div class="chat-msg bot-msg">
                         <div class="msg-bubble">
-                            <strong>👋 Namaste! I am TaxWise AI.</strong>
-                            <p>Ask me any question about Indian Income Tax slabs, deductions (80C, 80D, HRA, NPS), or choosing between the Old and New tax regimes. I explain everything in simple, jargon-free English!</p>
+                            <strong>👋 Namaste! I am your TaxWise AI Financial Co-pilot.</strong>
+                            <p>I am synchronized with your active numbers on the calculator above. Ask me to <strong>audit your current salary</strong>, explain deductions, or find out how to maximize your take-home pay under Indian Income Tax rules for <strong>FY 2025-26</strong>!</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Chat Input Form -->
                 <form id="chat-form" class="chat-input-bar" onsubmit="event.preventDefault(); submitChat();">
-                    <input type="text" id="chat-input" placeholder="Ask a question (e.g. Can I claim both HRA and home loan?)" autocomplete="off" required>
+                    <input type="text" id="chat-input" placeholder="Ask a question (e.g. Analyze my salary, Can I claim 80D for parents?)" autocomplete="off" required>
                     <button type="submit" id="chat-send-btn" class="btn btn-chat">
                         <span>Send</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -531,10 +571,19 @@
                 </form>
 
                 <p class="ai-disclaimer">
-                    ⚠️ <em>TaxWise AI provides educational estimates and guidance based on Indian Income Tax laws (FY 2024-25 / FY 2025-26). Always verify specific tax filings with the official Income Tax Department (incometax.gov.in) or a qualified Chartered Accountant.</em>
+                    ⚠️ <em>TaxWise AI provides educational estimates and guidance based on Indian Income Tax laws (FY 2025-26 / AY 2026-27). Always verify specific tax filings with the official Income Tax Department (incometax.gov.in) or a qualified Chartered Accountant.</em>
                 </p>
             </div>
         </section>
+
+        <!-- Floating Action Button (FAB) for AI Assistant -->
+        <div class="floating-ai-fab" onclick="scrollToAI()" title="Open TaxWise AI Assistant">
+            <div class="fab-icon">💬</div>
+            <div class="fab-text">
+                <span class="fab-title">Ask AI Co-Pilot</span>
+                <span class="fab-badge" id="fab-active-badge">₹12L (New)</span>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->

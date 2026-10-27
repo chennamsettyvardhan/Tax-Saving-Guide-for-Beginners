@@ -121,14 +121,15 @@ def chat():
     """Handles conversational questions with AI assistant."""
     data = request.get_json(silent=True) or {}
     question = str(data.get("question", "")).strip()
+    user_context = data.get("user_context", None)
 
     if not question:
         return jsonify({"error": "Please enter a question to ask TaxWise AI."}), 400
 
-    if len(question) > 1500:
-        return jsonify({"error": "Please keep your question under 1,500 characters."}), 400
+    if len(question) > 2000:
+        return jsonify({"error": "Please keep your question under 2,000 characters."}), 400
 
-    response = ai_assistant.ask_taxwise_ai(question)
+    response = ai_assistant.ask_taxwise_ai(question, user_context=user_context)
     return jsonify(response)
 
 

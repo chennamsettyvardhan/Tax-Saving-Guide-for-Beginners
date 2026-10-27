@@ -369,6 +369,18 @@ function renderDashboard(data) {
 
     // 7. Update Smart Recommendations Grid
     renderRecommendations(data.recommendations);
+
+    // 8. Update AI Co-Pilot Context Badges
+    const contextBadge = document.getElementById('ai-context-badge');
+    const fabBadge = document.getElementById('fab-active-badge');
+    const incomeLabel = formatLakhs(active.gross_income);
+    const regimeLabel = currentRegime === 'new' ? 'New Regime' : 'Old Regime';
+    if (contextBadge) {
+        contextBadge.textContent = `Active Context: ${incomeLabel} · ${regimeLabel}`;
+    }
+    if (fabBadge) {
+        fabBadge.textContent = `${incomeLabel} (${currentRegime === 'new' ? 'New' : 'Old'})`;
+    }
 }
 
 // Render Smart Recommendations
@@ -423,6 +435,45 @@ function askQuickPrompt(questionText) {
     document.getElementById('ai-assistant').scrollIntoView({ behavior: 'smooth' });
 }
 
+function clearChat() {
+    const stream = document.getElementById('chat-stream');
+    stream.innerHTML = `
+        <div class="chat-msg bot-msg">
+            <div class="msg-bubble">
+                <strong>👋 Namaste! I am your TaxWise AI Financial Co-pilot.</strong>
+                <p>Conversation reset. I am synchronized with your active numbers on the calculator above. Ask me to <strong>audit your current salary</strong>, explain deductions, or find out how to maximize your take-home pay under Indian Income Tax rules for <strong>FY 2025-26</strong>!</p>
+            </div>
+        </div>
+    `;
+}
+
+function scrollToAI() {
+    const el = document.getElementById('ai-assistant');
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+            const input = document.getElementById('chat-input');
+            if (input) input.focus();
+        }, 400);
+    }
+}
+
+function copyAnswer(btn) {
+    const bubble = btn.closest('.msg-bubble');
+    const content = bubble ? bubble.querySelector('.msg-content') : null;
+    const textToCopy = content ? content.innerText : '';
+
+    if (navigator.clipboard && textToCopy) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const span = btn.querySelector('span');
+            if (span) span.textContent = 'Copied! ✓';
+            setTimeout(() => {
+                if (span) span.textContent = 'Copy';
+            }, 2000);
+        });
+    }
+}
+
 async function submitChat() {
     const input = document.getElementById('chat-input');
     const stream = document.getElementById('chat-stream');
@@ -430,6 +481,18 @@ async function submitChat() {
     const question = input.value.trim();
 
     if (!question) return;
+
+    // Capture User Financial Context from live inputs
+    const userContext = {
+        gross_income: parseFloat(document.getElementById('gross_income').value) || 0,
+        is_salaried: document.getElementById('is_salaried').checked,
+        regime: currentRegime,
+        sec_80c: parseFloat(document.getElementById('sec_80c').value) || 0,
+        sec_80d: parseFloat(document.getElementById('sec_80d').value) || 0,
+        hra_exemption: parseFloat(document.getElementById('hra_exemption').value) || 0,
+        sec_80ccd_1b: parseFloat(document.getElementById('sec_80ccd_1b').value) || 0,
+        home_loan_24b: parseFloat(document.getElementById('home_loan_24b').value) || 0
+    };
 
     // 1. Append User Message
     const userMsg = document.createElement('div');
@@ -446,7 +509,7 @@ async function submitChat() {
     botMsg.className = 'chat-msg bot-msg';
     botMsg.innerHTML = `
         <div class="msg-bubble">
-            <span class="muted"><em>TaxWise AI is thinking...</em></span>
+            <span class="muted"><em>⚡ TaxWise AI is analyzing Indian tax rules...</em></span>
         </div>
     `;
     stream.appendChild(botMsg);
@@ -456,7 +519,10 @@ async function submitChat() {
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question: question })
+            body: JSON.stringify({
+                question: question,
+                user_context: userContext
+            })
         });
 
         const data = await response.json();
@@ -465,9 +531,19 @@ async function submitChat() {
         if (!response.ok) {
             bubble.innerHTML = `<span class="text-red">Error: ${escapeHTML(data.error || 'Could not fetch response')}</span>`;
         } else {
+            const formattedHTML = formatMarkdownToHTML(data.answer);
             bubble.innerHTML = `
-                <div>${formatMarkdownToHTML(data.answer)}</div>
-                <span class="msg-source-tag">Source: ${escapeHTML(data.source || 'TaxWise AI Knowledge Base')}</span>
+                <div class="msg-content">${formattedHTML}</div>
+                <div class="msg-footer">
+                    <span class="msg-source-tag">Source: ${escapeHTML(data.source || 'TaxWise AI Knowledge Base')}</span>
+                    <button type="button" class="btn-copy" onclick="copyAnswer(this)" title="Copy advice">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                        </svg>
+                        <span>Copy</span>
+                    </button>
+                </div>
             `;
         }
 
