@@ -9,7 +9,7 @@ An AI-powered, beginner-friendly Indian Income Tax web application that calculat
 1. **Interactive Income Tax Calculator**:
    - Computes tax for salaried individuals and professionals.
    - Handles standard deduction (₹75,000 for New Regime / ₹50,000 for Old Regime).
-   - Accurately computes Section 87A rebate (zero tax up to ₹7.75 Lakhs under New Regime) and marginal relief.
+   - Accurately computes Section 87A rebate (zero tax up to ₹12.75 Lakhs under New Regime for salaried) and marginal relief.
    - Surcharge and 4% Health & Education cess.
 
 2. **Old vs. New Tax Regime Comparison**:

@@ -72,27 +72,27 @@ If you are a salaried employee living in rented accommodation and receive **Hous
 | Feature | New Tax Regime (Default) | Old Tax Regime (Optional) |
 | :--- | :--- | :--- |
 | **Standard Deduction** | **₹75,000** (Salaried) | **₹50,000** (Salaried) |
-| **Tax Free Income Limit** | Up to **₹7.75 Lakhs** (after std ded & 87A rebate) | Up to **₹5.5 Lakhs** (after std ded & 87A rebate) |
+| **Tax Free Income Limit** | Up to **₹12.75 Lakhs** (after std ded & 87A rebate) | Up to **₹5.5 Lakhs** (after std ded & 87A rebate) |
 | **Deductions Allowed** | None (except employer NPS 80CCD(2)) | 80C, 80D, HRA, Home Loan Interest, etc. |
-| **Tax Slabs** | Lower rates (0%, 5%, 10%, 15%, 20%, 30%) | Higher rates (0%, 5%, 20%, 30%) |
+| **Tax Slabs** | Lower rates (0%, 5%, 10%, 15%, 20%, 25%, 30%) | Higher rates (0%, 5%, 20%, 30%) |
 | **Paperwork** | Zero investment proofs needed | Investment proofs & receipts required |
 
 #### Rule of Thumb:
-- **Choose the New Regime** if your total annual deductions (80C + 80D + HRA + NPS) are **less than ~₹3.75 - ₹4.0 Lakhs**.
-- **Choose the Old Regime** if you have heavy deductions (e.g., paying high rent with HRA, home loan interest of ₹2L, full 80C ₹1.5L, and 80D health insurance)."""
+- **Choose the New Regime** if your gross salary is up to **₹12.75 Lakhs** (as you pay **₹0 tax** with ₹75k standard deduction + ₹12L Section 87A rebate) or if your deductions under the Old Regime do not significantly exceed the new lower tax rates.
+- **Choose the Old Regime** only if you have massive deductions (high HRA rent, ₹2L home loan interest, full ₹1.5L 80C, ₹50k 80CCD NPS, and 80D health insurance)."""
     },
     "87a": {
-        "title": "Section 87A Rebate Explained",
+        "title": "Section 87A Rebate Explained (FY 2025-26)",
         "answer": """### What is Section 87A Tax Rebate?
-**Section 87A** provides tax relief to resident individual taxpayers with modest incomes so they pay **zero tax**.
+**Section 87A** provides tax relief to resident individual taxpayers so they pay **zero tax** up to specified income thresholds.
 
-#### In the New Tax Regime (FY 2024-25 & 2025-26):
-- If your net taxable income does not exceed **₹7,00,000**, you receive a rebate of up to **₹25,000**, making your **tax liability ₹0**.
-- Salaried individuals also get a **₹75,000 Standard Deduction**, meaning an annual gross salary of up to **₹7,75,000 pays ZERO income tax**!
-- **Marginal Relief**: If income slightly crosses ₹7 Lakhs, tax payable cannot exceed the amount by which income exceeds ₹7 Lakhs.
+#### In the New Tax Regime (FY 2025-26 / AY 2026-27):
+- If your net taxable income does not exceed **₹12,00,000**, you receive full Section 87A rebate, making your **tax liability ₹0**!
+- Salaried individuals also get a **₹75,000 Standard Deduction**, meaning an annual gross salary of up to **₹12,75,000 pays ZERO income tax**!
+- **Marginal Relief**: If taxable income slightly crosses ₹12 Lakhs, tax before cess cannot exceed the amount by which income exceeds ₹12 Lakhs.
 
 #### In the Old Tax Regime:
-- Available only if taxable income is up to **₹5,00,000** (rebate up to **₹12,500**)."""
+- Available only if taxable income is up to **₹5,00,000** (rebate up to **₹12,500**). Salaried pay zero tax up to ₹5.5 Lakhs."""
     },
     "nps": {
         "title": "Section 80CCD - National Pension System (NPS) Tax Benefits",
@@ -108,29 +108,29 @@ NPS offers three distinct tax benefits under the Income Tax Act:
 - At age 60, 60% of the corpus can be withdrawn completely tax-free; 40% is converted into a monthly pension (annuity)."""
     },
     "12 lakh": {
-        "title": "Tax Planning for ₹12 Lakh Annual Salary",
-        "answer": """### Tax Planning Guide for ₹12,00,000 Annual Salary
+        "title": "Tax Planning for ₹12 Lakh - ₹15 Lakh Annual Salary (FY 2025-26)",
+        "answer": """### Tax Planning Guide for FY 2025-26 (AY 2026-27)
 
-#### Under New Regime (FY 2025-26):
+#### For ₹12,00,000 Annual Salary under New Regime:
 - Gross Salary: ₹12,00,000
 - Standard Deduction: -₹75,000
-- Taxable Income: ₹11,25,000
-- Tax Computed: ₹68,750 + 4% cess = **₹71,500** (Effective tax rate: ~5.95%)
+- Net Taxable Income: ₹11,25,000
+- Tax Computed before rebate: ₹52,500 (0-4L @ 0%, 4-8L @ 5%, 8-11.25L @ 10%)
+- **Section 87A Rebate**: -₹52,500 (Since taxable income is under ₹12,00,000)
+- **Total Tax Payable = ₹0 (ZERO TAX!)** 🎉
 
-#### Under Old Regime:
-- Gross Salary: ₹12,00,000
-- Standard Deduction: -₹50,000
-- If you claim:
-  - 80C (EPF/ELSS/PPF): -₹1,50,000
-  - 80D (Health Insurance): -₹25,000
-  - HRA exemption: -₹1,20,000
-  - NPS 80CCD(1B): -₹50,000
-- Total deductions: ₹3,95,000
-- Taxable Income: ₹8,05,000
-- Tax Computed: ₹73,500 + 4% cess = **₹76,440**
-
-#### Verdict:
-Unless your deductions exceed **~₹4,10,000**, the **New Tax Regime** will save you more money with zero investment lock-ins!"""
+#### For ₹15,00,000 Annual Salary under New Regime:
+- Gross Salary: ₹15,00,000
+- Standard Deduction: -₹75,000
+- Net Taxable Income: ₹14,25,000
+- Slab Breakdown:
+  - ₹0 - ₹4L: ₹0
+  - ₹4L - ₹8L (5%): ₹20,000
+  - ₹8L - ₹12L (10%): ₹40,000
+  - ₹12L - ₹14.25L (15%): ₹33,750
+- Tax before cess: **₹93,750**
+- Health & Education Cess (4%): **₹3,750**
+- **Total Tax = ₹97,500** (Take-home salary: ₹14,02,500)!"""
     }
 }
 
@@ -149,11 +149,11 @@ def get_offline_tax_answer(query: str) -> Optional[Dict[str, str]]:
         return BUILTIN_TAX_KNOWLEDGE["hra"]
     elif any(k in q for k in ["old vs new", "regime", "difference", "which is better", "which regime"]):
         return BUILTIN_TAX_KNOWLEDGE["old vs new"]
-    elif any(k in q for k in ["87a", "rebate", "zero tax", "7 lakh", "7.75"]):
+    elif any(k in q for k in ["87a", "rebate", "zero tax", "12 lakh", "12.75", "marginal relief"]):
         return BUILTIN_TAX_KNOWLEDGE["87a"]
     elif any(k in q for k in ["nps", "80ccd", "pension"]):
         return BUILTIN_TAX_KNOWLEDGE["nps"]
-    elif any(k in q for k in ["12 lakh", "12l", "12 lpa", "save tax on 12"]):
+    elif any(k in q for k in ["15 lakh", "15l", "save tax on 12", "12l"]):
         return BUILTIN_TAX_KNOWLEDGE["12 lakh"]
 
     return None
@@ -183,13 +183,14 @@ def ask_taxwise_ai(question: str) -> Dict[str, Any]:
         return {
             "answer": (
                 "👋 **Welcome to TaxWise AI!**\n\n"
-                "I am your Indian Income Tax Learning Assistant. "
+                "I am your Indian Income Tax Learning Assistant for **FY 2025-26 (AY 2026-27)**. "
                 "Here are some popular topics you can ask me about:\n\n"
-                "- **Section 80C**: Investments, EPF, ELSS, PPF (up to ₹1.5 Lakh)\n"
+                "- **New Regime Slabs**: 0-4L (0%), 4-8L (5%), 8-12L (10%), 12-16L (15%), 16-20L (20%), 20-24L (25%), >24L (30%)\n"
+                "- **Section 87A Rebate**: Pay ₹0 tax up to ₹12 Lakhs taxable income (up to ₹12.75 Lakhs for salaried!)\n"
+                "- **Section 80C**: Investments, EPF, ELSS, PPF (up to ₹1.5 Lakh in Old Regime)\n"
                 "- **Section 80D**: Health insurance deductions for self and parents\n"
                 "- **HRA Exemption**: How rent allowance exemption is calculated\n"
-                "- **Old vs New Regime**: Which regime is better for your salary bracket\n"
-                "- **Section 87A Rebate**: How salaried people pay ₹0 tax up to ₹7.75 Lakhs\n\n"
+                "- **Old vs New Regime**: Which regime is better for your salary bracket\n\n"
                 "💡 *Tip: To enable live Gemini AI explanations for custom queries, add your free `GEMINI_API_KEY` to the `.env` file.*"
             ),
             "source": "TaxWise Guide",
@@ -201,11 +202,20 @@ def ask_taxwise_ai(question: str) -> Dict[str, Any]:
 You are TaxWise AI, an expert, friendly educational assistant specializing in Indian Income Tax for beginners, salaried professionals, and students.
 
 Core Principles:
-1. Ground answers strictly in verified Indian Income Tax rules for Financial Year 2024-25 / 2025-26 (Assessment Year 2025-26 / 2026-27).
-2. Detail the differences between the Old Tax Regime and New Tax Regime (Section 115BAC). Remember that the New Regime has a ₹75,000 standard deduction for salaried individuals and 0 tax up to ₹7.75 Lakhs with 87A rebate.
-3. Keep answers beginner-friendly, structured, and easy to read using markdown headings, bullet points, and tables when helpful.
-4. Always clarify that this is educational guidance and not certified chartered accountant advice.
-5. Never request personal identifying information (PAN, Aadhaar, bank credentials, passwords).
+1. Ground answers strictly in verified Indian Income Tax rules for Financial Year 2025-26 (Assessment Year 2026-27).
+2. Under the New Tax Regime (Section 115BAC) for FY 2025-26:
+   - Slabs: 0-4L (0%), 4-8L (5%), 8-12L (10%), 12-16L (15%), 16-20L (20%), 20-24L (25%), Above 24L (30%).
+   - Standard Deduction for salaried is ₹75,000.
+   - Section 87A rebate provides full tax relief (zero tax) for taxable income up to ₹12,00,000 (meaning salaried employees pay ₹0 tax on gross income up to ₹12,75,000).
+   - Marginal relief applies if taxable income slightly exceeds ₹12 Lakhs.
+3. Under the Old Tax Regime:
+   - Slabs: 0-2.5L (0%), 2.5-5L (5%), 5-10L (20%), Above 10L (30%).
+   - Standard Deduction: ₹50,000.
+   - Section 87A rebate up to ₹5,00,000 taxable income.
+   - Deductions allowed: 80C (₹1.5L), 80D (₹25k-₹50k), HRA, 80CCD(1B) NPS (₹50k), Home loan interest (₹2L).
+4. Keep answers beginner-friendly, structured, and easy to read using markdown headings, bullet points, and tables when helpful.
+5. Always clarify that this is educational guidance and not certified chartered accountant advice.
+6. Never request personal identifying information (PAN, Aadhaar, bank credentials, passwords).
 """
 
     try:
@@ -241,7 +251,7 @@ Core Principles:
                 f"### Tax Guidance\n\n"
                 f"Regarding your query on: **\"{clean_question}\"**\n\n"
                 f"Under Indian Income Tax rules (FY 2025-26), taxpayers can choose between the **New Regime** "
-                f"(simplified, lower tax rates, ₹75,000 standard deduction, zero tax up to ₹7.75 Lakhs) or the **Old Regime** "
+                f"(simplified, lower tax rates, ₹75,000 standard deduction, zero tax up to ₹12.75 Lakhs) or the **Old Regime** "
                 f"(higher slabs, but allows deductions like 80C up to ₹1.5L, 80D up to ₹25k-₹50k, and HRA).\n\n"
                 f"*Note: Live Gemini API request encountered: {str(e)[:120]}. Please check your API key in .env.*"
             ),

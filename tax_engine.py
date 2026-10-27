@@ -34,17 +34,18 @@ def calculate_new_regime(
 ) -> Dict[str, Any]:
     """
     Computes Indian Income Tax under the New Tax Regime (Section 115BAC)
-    Updated as per Union Budget 2024-25 / 2025-26:
+    Applicable for FY 2025-26 (AY 2026-27):
     - Standard deduction for salaried: ₹75,000
     - Slabs:
-        0 - 3,00,000        : 0%
-        3,00,001 - 7,00,000 : 5%
-        7,00,001 - 10,00,000: 10%
-        10,00,001 - 12,00,000: 15%
-        12,00,001 - 15,00,000: 20%
-        Above 15,00,000     : 30%
-    - Section 87A Rebate: Full rebate up to ₹25,000 if taxable income <= ₹7,00,000 (tax = ₹0)
-    - Marginal relief under Section 87A: Tax before cess cannot exceed (Taxable Income - ₹7,00,000)
+        0 - 4,00,000        : 0% (Nil)
+        4,00,001 - 8,00,000 : 5%
+        8,00,001 - 12,00,000: 10%
+        12,00,001 - 16,00,000: 15%
+        16,00,001 - 20,00,000: 20%
+        20,00,001 - 24,00,000: 25%
+        Above 24,00,000     : 30%
+    - Section 87A Rebate: Full rebate up to ₹12,00,000 taxable income (tax = ₹0)
+    - Marginal relief under Section 87A: Tax before cess cannot exceed (Taxable Income - ₹12,00,000)
     """
     gross = max(0.0, float(gross_income))
     std_deduction = 75000.0 if is_salaried else 0.0
@@ -54,12 +55,13 @@ def calculate_new_regime(
     taxable_income = max(0.0, gross - total_deductions)
 
     slabs = [
-        (0, 300000, 0.00, "Up to ₹3,00,000"),
-        (300000, 700000, 0.05, "₹3,00,001 to ₹7,00,000"),
-        (700000, 1000000, 0.10, "₹7,00,001 to ₹10,00,000"),
-        (1000000, 1200000, 0.15, "₹10,00,001 to ₹12,00,000"),
-        (1200000, 1500000, 0.20, "₹12,00,001 to ₹15,00,000"),
-        (1500000, float("inf"), 0.30, "Above ₹15,00,000"),
+        (0, 400000, 0.00, "Up to ₹4,00,000"),
+        (400000, 800000, 0.05, "₹4,00,001 to ₹8,00,000"),
+        (800000, 1200000, 0.10, "₹8,00,001 to ₹12,00,000"),
+        (1200000, 1600000, 0.15, "₹12,00,001 to ₹16,00,000"),
+        (1600000, 2000000, 0.20, "₹16,00,001 to ₹20,00,000"),
+        (2000000, 2400000, 0.25, "₹20,00,001 to ₹24,00,000"),
+        (2400000, float("inf"), 0.30, "Above ₹24,00,000"),
     ]
 
     breakdown: List[Dict[str, Any]] = []
@@ -84,18 +86,18 @@ def calculate_new_regime(
                 "tax": 0.0
             })
 
-    # Section 87A Rebate & Marginal Relief
+    # Section 87A Rebate & Marginal Relief (FY 2025-26: Threshold ₹12,00,000)
     rebate_87a = 0.0
     marginal_relief = 0.0
     tax_after_rebate = base_tax
 
-    if taxable_income <= 700000.0:
-        # Full rebate under 87A
+    if taxable_income <= 1200000.0:
+        # Full rebate under 87A (Zero tax for taxable income up to ₹12 Lakhs)
         rebate_87a = base_tax
         tax_after_rebate = 0.0
-    elif taxable_income > 700000.0:
-        # Marginal relief: Tax before cess cannot exceed income over ₹7,00,000
-        excess_income = taxable_income - 700000.0
+    elif taxable_income > 1200000.0:
+        # Marginal relief: Tax before cess cannot exceed income over ₹12,00,000
+        excess_income = taxable_income - 1200000.0
         if base_tax > excess_income:
             marginal_relief = base_tax - excess_income
             tax_after_rebate = excess_income
@@ -125,9 +127,9 @@ def calculate_new_regime(
         "effective_rate": round(effective_rate, 2),
         "slab_breakdown": breakdown,
         "features": [
-            "Increased Standard Deduction of ₹75,000 for salaried individuals",
-            "Zero tax up to ₹7.75 Lakhs for salaried individuals (due to ₹75k std deduction + ₹7L rebate)",
-            "Concessional tax slabs with lower tax rates across all brackets",
+            "Standard Deduction of ₹75,000 for salaried individuals",
+            "Zero tax up to ₹12.75 Lakhs for salaried individuals (₹75k std deduction + ₹12L Section 87A rebate)",
+            "Concessional tax slabs with ₹4 Lakh brackets: 0%, 5%, 10%, 15%, 20%, 25%, 30%",
             "No paperwork or proof of investments required"
         ]
     }
